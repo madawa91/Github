@@ -1,5 +1,4 @@
 
-
 [fname, path]=uigetfile('.jpg''Provide a image for testing');
 fname=strcat(path,fname); 
 im=imread(fname);

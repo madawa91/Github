@@ -94,9 +94,10 @@ msgbox('Enter Class Number');
 
 function edit1_Callback(hObject, eventdata, handles)
 
-%  c=input('Please Enter the Class Number :'); 
-c=str2num(get(handles.edit1,'String'));
-setappdata(0,'edit_1',c);
+%c=input('Please Enter the Class Number :'); 
+
+
+
 % hObject    handle to edit1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -121,7 +122,16 @@ end
 % --- Executes on button press in pushbutton2.
 function pushbutton2_Callback(hObject, eventdata, handles)
 
-c=getappdata(0,'edit_1');
+c=get(handles.edit1,'String');
+%assignin('base','c',c);
+% setappdata(0,'edit_1',c);
+
+
+
+
+
+
+% c=getappdata(0,'edit_1');
 msgbox('Class added');
 
 F=FeatureStatistical(im);
