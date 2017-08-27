@@ -85,13 +85,13 @@ q= get(handles.edit1, 'string');
 z=get(handles.edit2,'string'); 
 
 p=str2double(q);
+pp=str2double(z);
 
 
-
-insertdata ={p z};
+insertdata ={p pp};
 colnames = {'age','name'};
 data_table = cell2table(insertdata,'VariableNames',colnames);
-tablename = 'tbl_users';
+tablename = 'tbl_user';
 insert(conn,tablename,colnames,data_table);
 
     msgbox('Successfully Data is Saved');
@@ -107,71 +107,6 @@ close(conn)
       close(curs)
       close(conn)
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% datasource = 'testuser';
-% conn = database(datasource,'testuser','1234');
-% 
-% if(isempty(conn.message))
-% 
-%      disp('database connected')
-% 
-%  else
-%      disp('cannot connected')
-% 
-%      disp(conn.message);
-% 
-%      return
-% end
-% 
-% setdbprefs('DataReturnFormat','numeric')
-% 
-% 
-% 
-% 
-% test_name=get(handles.edit2, 'string'); 
-% test_age= get(handles.edit1, 'string');
-% 
-% 
-% % test_age=str2num(test_age);
-% exdata2={test_name,test_age};
-% 
-% % exdata = {'2','Shalu','22','female'};
-% 
-% 
-% fastinsert(conn, 'tbl_user', {'age','name' },exdata2)
-% 
-% commit(conn)
-% 
-% close(conn);
-% name = get(handles.edit1, 'string'); % we dont want this, But just add to chek. we want   this name in database.
-% 
-% disp(name)
-% 
-% age = get(handles.edit2, 'string'); 
-% 
-% disp(age)
-
-
-
 
 function edit1_Callback(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
@@ -226,19 +161,21 @@ datasource = 'testuser';
 conn = database(datasource,'testuser','1234');
 conn.Message;
  
-curs = exec(conn,'SELECT * FROM tbl_users');
- curs = fetch(curs);
-  curs.Data
+curs = exec(conn,'SELECT * FROM tbl_user');
+curs = fetch(curs);
+%  curs.Data
  data = curs.Data;
+%  set(handles.edit3,'String',age);
+%  set(handles.edit4,'String',name);
+
+%for (i = 1:2)
+%     v1 = data(i,1);
+%     v2 = data(i,2);
+% raw=[v1 v2];
+% set(handles.uitable1,'Data',raw);
+%end
  
- age = {data(1)};
- name = {data(2)};
-
-%  set(handles.edit3,'String',a);
-%  set(handles.edit4,'String',b);
-
-% %  raw=[age name];
-% %  set(handles.uitable1,'Data',raw);
+ set(handles.uitable1,'Data',data);
  
 %   set(handles.uitable1,'Data',age);
 %   set(handles.uitable2,'Data',name);
