@@ -9,8 +9,10 @@ imrd=imread(fnstr);
 im = rgb2gray(imrd);
 imshow(im);
 title('Import Image is Success');
-
 c=input('Please Enter the Class Number :'); 
+
+
+
 
 
 F=FeatureStatistical(im);
